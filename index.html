@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Viewer Silsilah</title>
+  <style>
+  .aksara-jawa {
+  font-family: 'Noto Sans Javanese', sans-serif;
+}
+  :root {
+    --bg: #0a0a0a;
+    --card: #121212;
+    --border: rgba(255,255,255,0.1);
+    --lvl_neg1: #888;
+    --lvl1: #FFD700;
+    --lvl2: #00BFFF;
+    --lvl3: #32CD32;
+    --lvl4: #BA55D3;
+  }
+  .header-text {
+  text-align: center;
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 0 0 5px rgba(255,255,255,0.2);
+}
+.header-jawa {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 30px 15px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.9),
+    rgba(30,20,0,0.8)
+  );
+
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 15px;
+
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* AKSARA JAWA */
+.aksara {
+  font-size: 28px;
+  color: #FFD700;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+/* JUDUL */
+.header-content h1 {
+  font-size: 24px;
+  margin: 5px 0;
+
+  background: linear-gradient(90deg, #FFD700, #FFEA70);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  letter-spacing: 2px;
+}
+/* CONTAINER UTAMA */
+.ukiran-container {
+  margin: 30px auto;
+  text-align: center;
+}
+
+/* FRAME (seperti papan ukiran) */
+.ukiran-frame {
+  display: inline-block;
+  padding: 25px 30px;
+  border-radius: 15px;
+
+  background: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('https://www.transparenttextures.com/patterns/dark-wood.png');
+
+  border: 2px solid rgba(255,215,0,0.4);
+
+  box-shadow: 
+    0 0 20px rgba(255,215,0,0.2),
+    inset 0 0 15px rgba(0,0,0,0.8);
+}
+
+/* TEKS AKSARA */
+.aksara-jawa {
+  font-size: 24px;
+  line-height: 1.8;
+
+  /* efek emas */
+  background: linear-gradient(180deg, #FFD700, #b89600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* efek ukiran (emboss) */
+  text-shadow:
+    1px 1px 0 #5a4a00,
+    2px 2px 3px rgba(0,0,0,0.8),
+    0 0 10px rgba(255,215,0,0.4);
+
+  letter-spacing: 2px;
+}
+.ukiran-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+
+  background: radial-gradient(circle, rgba(255,215,0,0.1), transparent);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.aksara-jawa {
+  animation: glowJawa 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowJawa {
+  from {
+    text-shadow:
+      1px 1px 0 #5a4a00,
+      0 0 5px rgba(255,215,0,0.2);
+  }
+  to {
+    text-shadow:
+      1px 1px 0 #5a4a00,
+      0 0 15px rgba(255,215,0,0.6);
+  }
+}
+.ukiran-frame::after {
+  content: "❖ ❖ ❖";
+  display: block;
+  margin-top: 10px;
+  color: #FFD700;
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+/* SUB */
+.sub {
+  font-size: 14px;
+  color: #ccc;
+  letter-spacing: 3px;
+}
+
+/* ORNAMEN ATAS & BAWAH */
+.ornamen {
+  height: 20px;
+  background: url('https://www.transparenttextures.com/patterns/batik.png');
+  opacity: 0.3;
+}
+
+.ornamen.atas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.ornamen.bawah {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.header-jawa::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: radial-gradient(circle, rgba(255,215,0,0.1), transparent);
+
+  animation: glow 6s linear infinite;
+}
+
+@keyframes glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.filosofi {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+  body { 
+  font-family: Arial; 
+  color: white; 
+  padding: 20px;
+background: 
+  linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
+  url('https://cdn.pixabay.com/photo/2023/01/08/14/32/batik-7705404_1280.png');
+  
+
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+  #list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .level-section {
+    width: 100%;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+  }
+
+  .level-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .parent-groups-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+  .parent-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 12px;
+    min-width: 200px;
+  }
+  .parent-box {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,215,0,0.2);
+  padding: 12px;
+  border-radius: 12px;
+  min-width: 200px;
+  box-shadow: 0 0 10px rgba(255,215,0,0.15);
+}
+
+  .parent-name {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 3px;
+  }
+
+  .cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .card {
+    background: var(--card);
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    min-width: 130px;
+    border-left: 4px solid #fff;
+  }
+
+  .title-main {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  background: linear-gradient(90deg, #FFD700, #00FFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.card {
+  background: rgba(20,20,20,0.85);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  min-width: 130px;
+  border-left: 4px solid #FFD700;
+  box-shadow: 0 0 8px rgba(255,215,0,0.2);
+}
+.level-section {
+  width: 100%;
+  border-bottom: 1px dashed rgba(255,215,0,0.3);
+  padding-bottom: 20px;
+}
+#audioControl {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+  .header-text {
+    text-align: center;
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(255,215,0,0.3);
+  text-align: center;
+  font-size: 12px;
+  color: #ccc;
+}
+  .whatsapp-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #25D366;
+  color: white;
+  font-size: 13px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+}
+</style>
+</head>
+<body>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese&display=swap" rel="stylesheet">
+<audio id="gendingAudio" autoplay loop muted>
+  <source src="https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3" type="audio/mpeg">
+</audio>
+<div style="text-align:center; margin-bottom:10px; font-size:18px; color:#FFD700;">
+  ꦗꦻꦩꦶꦤ꧀
+</div>
+<div id="audioControl" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #FFD700;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 999;
+">
+  ▶ Aktifkan Gending Jawa
+</div>
+<div class="header-jawa">
+
+  <div class="ornamen atas"></div>
+
+ <div class="ukiran-container">
+  <div class="ukiran-frame">
+    <div class="aksara-jawa">
+      ꦈꦫꦶꦥ꧀ ꦆꦏꦸ ꦩꦸꦁ ꦩꦩ꧀ꦥꦶꦂ ꦔꦺꦴꦩ꧀ꦧꦺ, ꦤꦔꦶꦁ ꦲꦱꦭ꧀-ꦲꦱꦸꦭ꧀ ꦲꦺꦴꦫ ꦏꦼꦤ ꦭꦭꦶ
+    </div>
+  </div>
+</div>
+    <h1>“Sangkan Paraning Dumadi”</h1>
+    <p class="sub">Rejo Semito</p>
+    <p class="filosofi">
+  “Urip iku mung mampir ngombe, nanging asal-usul ora kena lali.”
+</p>
+  </div>
+
+  <div class="ornamen bawah"></div>
+
+</div>
+<h2 class="title-main">SILSILAH KELUARGA REJO SEMITO</h2>
+
+<div class="header-text">
+  Jejak ini bukan sekadar nama, tetapi kisah, doa, dan perjuangan dari setiap generasi.<br>
+  Semoga silsilah ini menjadi pengingat akan asal-usul, mempererat tali persaudaraan,<br>
+  dan menjaga warisan keluarga untuk anak cucu di masa mendatang.
+</div>
+
+<div id="list"></div>
+
+<div class="footer">
+  Mohon maaf apabila terdapat kesalahan penulisan nama, gelar, maupun data lainnya.<br>
+  Untuk perbaikan atau informasi lebih lanjut, silakan hubungi:<br>
+  <b>+62 895-3280-77773</b><br>
+
+  <a 
+    href="https://wa.me/62895328077773?text=Assalamu'alaikum,%20saya%20ingin%20mengoreksi%20data%20silsilah%20keluarga" 
+    target="_blank" 
+    class="whatsapp-btn">
+    Hubungi via WhatsApp
+  </a>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB7YcqOSbQGNgEkbo3z2j672k9MEtAHA5o",
+  authDomain: "silsilah-keluarga-rejo-semito.firebaseapp.com",
+  projectId: "silsilah-keluarga-rejo-semito",
+  storageBucket: "silsilah-keluarga-rejo-semito.appspot.com",
+  messagingSenderId: "850723357773",
+  appId: "1:850723357773:web:6b3ed3bcc5f4252394c804"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+onSnapshot(collection(db, "keluarga"), (snapshot) => {
+  let dataByLevel = {};
+
+  snapshot.forEach((docu) => {
+    const data = docu.data();
+    const lvl = data.level !== undefined ? data.level : 0;
+    const ortu = data.ortu || "Leluhur";
+
+    if (!dataByLevel[lvl]) dataByLevel[lvl] = {};
+    if (!dataByLevel[lvl][ortu]) dataByLevel[lvl][ortu] = [];
+    
+    dataByLevel[lvl][ortu].push(data);
+  });
+
+  let html = "";
+  const sortedLevels = Object.keys(dataByLevel).sort((a, b) => parseInt(a) - parseInt(b));
+
+  sortedLevels.forEach(lvl => {
+    const colors = { "-1": "#888", "1": "#FFD700", "2": "#00BFFF", "3": "#32CD32", "4": "#BA55D3" };
+    const warnaLvl = colors[lvl] || "#fff";
+
+    html += `
+      <div class="level-section">
+        <div class="level-title" style="color: ${warnaLvl}">LEVEL ${lvl}</div>
+        <div class="parent-groups-container">
+    `;
+
+    const sortedParents = Object.keys(dataByLevel[lvl]).sort((a, b) => {
+  const [a1, a2] = a.split('.').map(Number);
+  const [b1, b2] = b.split('.').map(Number);
+
+  if (a1 !== b1) return a1 - b1;
+  return a2 - b2;
+});
+
+    sortedParents.forEach(parentName => {
+      html += `
+        <div class="parent-box">
+          <div class="parent-name">Anak dari: <b>${parentName}</b></div>
+          <div class="cards-row">
+      `;
+
+      dataByLevel[lvl][parentName].sort((a,b) => a.nama.localeCompare(b.nama)).forEach(item => {
+        html += `
+          <div class="card" style="border-left-color: ${warnaLvl}">
+            <b>${item.nama}</b><br>
+            <span style="color:#888">P: ${item.pasangan || "-"}</span>
+          </div>
+        `;
+      });
+
+      html += `</div></div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  document.getElementById("list").innerHTML = html;
+});
+</script>
+<script>
+document.addEventListener("click", function () {
+  const audio = document.getElementById("gendingAudio");
+  audio.play();
+}, { once: true });
+</script>
+<script>
+const audio = document.getElementById("gendingAudio");
+const btn = document.getElementById("audioControl");
+
+btn.addEventListener("click", () => {
+  audio.muted = false;
+  audio.play();
+  btn.style.display = "none";
+});
+window.addEventListener("load", () => {
+  const audio = document.getElementById("gendingAudio");
+  audio.play().catch(() => {
+    console.log("Autoplay diblokir browser");
+  });
+});
+</script>
+
+</body>
+</html>
