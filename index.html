@@ -1,406 +1,295 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Viewer Silsilah</title>
-  <style>
-  .aksara-jawa {
-  font-family: 'Noto Sans Javanese', sans-serif;
-}
-  :root {
-    --bg: #0a0a0a;
-    --card: #121212;
-    --border: rgba(255,255,255,0.1);
-    --lvl_neg1: #888;
-    --lvl1: #FFD700;
-    --lvl2: #00BFFF;
-    --lvl3: #32CD32;
-    --lvl4: #BA55D3;
-  }
-  .header-text {
-  text-align: center;
-  font-size: 13px;
-  color: #ddd;
-  margin-bottom: 30px;
-  line-height: 1.6;
-  text-shadow: 0 0 5px rgba(255,255,255,0.2);
-}
-.header-jawa {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 30px 15px;
+<meta charset="UTF-8">
+<title>Silsilah Relasi Sempurna</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    color: #f5e6c8;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.9),
-    rgba(30,20,0,0.8)
-  );
-
-  border: 1px solid rgba(255,215,0,0.3);
-  border-radius: 15px;
-
-  box-shadow: 0 0 20px rgba(255,215,0,0.2);
-  position: relative;
-  overflow: hidden;
+    /* Background Batik */
+    background: url("https://www.transparenttextures.com/patterns/batik.png"),
+                radial-gradient(circle, #1a120b, #0d0a06);
 }
 
-/* AKSARA JAWA */
-.aksara {
-  font-size: 28px;
-  color: #FFD700;
-  opacity: 0.8;
-  margin-bottom: 5px;
+/* Wrapper */
+.wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
 }
 
-/* JUDUL */
-.header-content h1 {
-  font-size: 24px;
-  margin: 5px 0;
-
-  background: linear-gradient(90deg, #FFD700, #FFEA70);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  letter-spacing: 2px;
-}
-/* CONTAINER UTAMA */
-.ukiran-container {
-  margin: 30px auto;
-  text-align: center;
+/* HEADER */
+.header-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #3e2c1c, #6b4f2a);
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212,175,55,0.4);
 }
 
-/* FRAME (seperti papan ukiran) */
-.ukiran-frame {
-  display: inline-block;
-  padding: 25px 30px;
-  border-radius: 15px;
-
-  background: 
-    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url('https://www.transparenttextures.com/patterns/dark-wood.png');
-
-  border: 2px solid rgba(255,215,0,0.4);
-
-  box-shadow: 
-    0 0 20px rgba(255,215,0,0.2),
-    inset 0 0 15px rgba(0,0,0,0.8);
+.header-box h1 {
+    color: #ffd700;
+    margin: 0;
+    letter-spacing: 2px;
 }
 
-/* TEKS AKSARA */
-.aksara-jawa {
-  font-size: 24px;
-  line-height: 1.8;
-
-  /* efek emas */
-  background: linear-gradient(180deg, #FFD700, #b89600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* efek ukiran (emboss) */
-  text-shadow:
-    1px 1px 0 #5a4a00,
-    2px 2px 3px rgba(0,0,0,0.8),
-    0 0 10px rgba(255,215,0,0.4);
-
-  letter-spacing: 2px;
-}
-.ukiran-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 15px;
-
-  background: radial-gradient(circle, rgba(255,215,0,0.1), transparent);
-  opacity: 0.6;
-  pointer-events: none;
-}
-.aksara-jawa {
-  animation: glowJawa 4s ease-in-out infinite alternate;
+/* Kata mutiara */
+.quote {
+    margin-top: 10px;
+    font-style: italic;
+    color: #e6c97a;
+    font-size: 13px;
 }
 
-@keyframes glowJawa {
-  from {
-    text-shadow:
-      1px 1px 0 #5a4a00,
-      0 0 5px rgba(255,215,0,0.2);
-  }
-  to {
-    text-shadow:
-      1px 1px 0 #5a4a00,
-      0 0 15px rgba(255,215,0,0.6);
-  }
-}
-.ukiran-frame::after {
-  content: "❖ ❖ ❖";
-  display: block;
-  margin-top: 10px;
-  color: #FFD700;
-  opacity: 0.6;
-  font-size: 12px;
+/* SEARCH */
+#search {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #d4af37;
+    background: #1a120b;
+    color: #f5e6c8;
 }
 
-/* SUB */
-.sub {
-  font-size: 14px;
-  color: #ccc;
-  letter-spacing: 3px;
+/* CARD */
+.card {
+    background: linear-gradient(145deg, #2b1d0e, #1a120b);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 6px 0;
+    border-left: 5px solid  #BA55D3;
+    transition: 0.3s;
 }
 
-/* ORNAMEN ATAS & BAWAH */
-.ornamen {
-  height: 20px;
-  background: url('https://www.transparenttextures.com/patterns/batik.png');
-  opacity: 0.3;
+.card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+/* container tetap full */
+.footer-box {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 30px;
+    text-align: center;
 }
 
-.ornamen.atas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+/* gambar diperkecil & center */
+.footer-box img {
+    width: 100%;
+    max-height: 180px;   /* 🔥 ini yang mengecilkan */
+    object-fit: contain; /* biar tidak gepeng */
+    display: block;
+    margin: auto; center
 }
 
-.ornamen.bawah {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-.header-jawa::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-
-  background: radial-gradient(circle, rgba(255,215,0,0.1), transparent);
-
-  animation: glow 6s linear infinite;
+//* Container footer */
+.footer-box {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
 }
 
-@keyframes glow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.filosofi {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 10px;
-  font-style: italic;
+/* Gambar footer */
+.footer-box img {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
 }
 
-  body { 
-  font-family: Arial; 
-  color: white; 
-  padding: 20px;
-background: 
-  linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)),
-  url('https://cdn.pixabay.com/photo/2023/01/08/14/32/batik-7705404_1280.png');
-  
+/* Layer glow emas */
+.footer-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-  background-size: cover;
-  background-attachment: fixed;
+    /* warna glow emas */
+    background: radial-gradient(circle at center, 
+        rgba(255,215,0,0.25),
+        rgba(255,215,0,0.08),
+        transparent 70%);
+
+    mix-blend-mode: screen;
+    animation: glowPulse 4s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
 }
 
-  #list {
+/* Animasi glow hidup */
+@keyframes glowPulse {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .header-box h1 {
+        font-size: 16px;
+    }
+
+    .quote {
+        font-size: 12px;
+    }
+}
+
+.children {
+    margin-left: 30px;
+    border-left: 2px dashed #6b4f2a;
+    display: none;
+    padding-left: 10px;
+}
+
+.children.active {
+    display: block;
+}
+
+.folder-icon::before { content: "👉 "; opacity: 0.8; }
+.file-icon::before { content: "ꦲ "; opacity: 0.7; }
+
+b { color: #ffd700; font-size: 15px; }
+small { color: #c2a45c; }
+.arrow { transition: transform 0.3s; color:  #BA55D3; font-size: 14px; }
+
+#splash {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #1a120b;
+    color: #ffd700;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-  }
-
-  .level-section {
-    width: 100%;
-    border-bottom: 1px dashed rgba(255,255,255,0.1);
-    padding-bottom: 20px;
-  }
-
-  .level-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-  }
-
-  .parent-groups-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-  .parent-box {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    padding: 10px;
-    border-radius: 12px;
-    min-width: 200px;
-  }
-  .parent-box {
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,215,0,0.2);
-  padding: 12px;
-  border-radius: 12px;
-  min-width: 200px;
-  box-shadow: 0 0 10px rgba(255,215,0,0.15);
-}
-
-  .parent-name {
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 3px;
-  }
-
-  .cards-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .card {
-    background: var(--card);
-    padding: 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    min-width: 130px;
-    border-left: 4px solid #fff;
-  }
-
-  .title-main {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-
-  background: linear-gradient(90deg, #FFD700, #00FFFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.card {
-  background: rgba(20,20,20,0.85);
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 11px;
-  min-width: 130px;
-  border-left: 4px solid #FFD700;
-  box-shadow: 0 0 8px rgba(255,215,0,0.2);
-}
-.level-section {
-  width: 100%;
-  border-bottom: 1px dashed rgba(255,215,0,0.3);
-  padding-bottom: 20px;
-}
-#audioControl {
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-  .header-text {
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
     text-align: center;
-    font-size: 13px;
-    color: #ccc;
-    margin-bottom: 30px;
-    line-height: 1.6;
-  }
-
-  .footer {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px dashed rgba(255,215,0,0.3);
-  text-align: center;
-  font-size: 12px;
-  color: #ccc;
-}
-  .whatsapp-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 16px;
-  background: #25D366;
-  color: white;
-  font-size: 13px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
+    transition: opacity 1s ease;
 }
 
-.whatsapp-btn:hover {
-  background: #1ebe5d;
+#splash button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #d4af37;
+    color: #1a120b;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Times New Roman', serif;
+}
+
+#splash.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .card { flex-direction: column; align-items: flex-start; }
+    .arrow { align-self: flex-end; }
+    .children { margin-left: 15px; }
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    max-width: 90%;
+    animation: zoomIn 0.5s ease;
+}
+
+.popup-content img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gold;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: gold;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 </style>
 </head>
 <body>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese&display=swap" rel="stylesheet">
-<audio id="gendingAudio" autoplay loop muted>
-  <source src="https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3" type="audio/mpeg">
-</audio>
-<div style="text-align:center; margin-bottom:10px; font-size:18px; color:#FFD700;">
-  ꦗꦻꦩꦶꦤ꧀
-</div>
-<div id="audioControl" style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #FFD700;
-  color: black;
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 12px;
-  cursor: pointer;
-  z-index: 999;
-">
-  ▶ Aktifkan Gending Jawa
-</div>
-<div class="header-jawa">
-
-  <div class="ornamen atas"></div>
-
- <div class="ukiran-container">
-  <div class="ukiran-frame">
-    <div class="aksara-jawa">
-      ꦈꦫꦶꦥ꧀ ꦆꦏꦸ ꦩꦸꦁ ꦩꦩ꧀ꦥꦶꦂ ꦔꦺꦴꦩ꧀ꦧꦺ, ꦤꦔꦶꦁ ꦲꦱꦭ꧀-ꦲꦱꦸꦭ꧀ ꦲꦺꦴꦫ ꦏꦼꦤ ꦭꦭꦶ
+  <h1 id="judul"></h1>
+<p id="mutiara"></p>
+<div id="popupCerita" class="popup">
+    <div class="popup-content">
+        <span class="closeBtn">&times;</span>
+        <img src="https://raw.githubusercontent.com/nguantukbanget84-sys/silsilah-audio/refs/heads/main/Cerita%20pendek.png" alt="Cerita Leluhur">
     </div>
-  </div>
 </div>
-    <h1>“Sangkan Paraning Dumadi”</h1>
-    <p class="sub">Rejo Semito</p>
-    <p class="filosofi">
-  “Urip iku mung mampir ngombe, nanging asal-usul ora kena lali.”
-</p>
-  </div>
+<div id="splash">
+    <h1>Sugeng Rawuh</h1>
+    <p>Ing Silsilah Keluarga</p>
+    <button id="btnMasuk">Mlebet</button>
+</div>
+<div class="wrapper">
 
-  <div class="ornamen bawah"></div>
+    <!-- HEADER -->
+    <header class="header-box">
+        <h1>SILSILAH KELUARGA AGUNG</h1>
+        <p class="quote">
+            “Sapa sing ora ngerti asal-usule, bakal ilang arah lan tujuane.”
+        </p>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main>
+        <input type="text" id="search" placeholder="Telusuri asmane...">
+        <div id="app"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-box">
+        <img src="https://raw.githubusercontent.com/nguantukbanget84-sys/silsilah-audio/refs/heads/main/ChatGPT%20Image%2021%20Apr%202026%2C%2021.28.46.png" alt="Credit Pembuat">
+        <p>© 2026 - Keluarga Rejo Semito</p>
+    </footer>
 
 </div>
-<h2 class="title-main">SILSILAH KELUARGA REJO SEMITO</h2>
 
-<div class="header-text">
-  Jejak ini bukan sekadar nama, tetapi kisah, doa, dan perjuangan dari setiap generasi.<br>
-  Semoga silsilah ini menjadi pengingat akan asal-usul, mempererat tali persaudaraan,<br>
-  dan menjaga warisan keluarga untuk anak cucu di masa mendatang.
-</div>
+<h2>SANGKAN PARANING DUMADI</h2>
 
-<div id="list"></div>
+<audio id="bgMusic" loop>
+    <source src="https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3" type="audio/mpeg">
+</audio>
 
-<div class="footer">
-  Mohon maaf apabila terdapat kesalahan penulisan nama, gelar, maupun data lainnya.<br>
-  Untuk perbaikan atau informasi lebih lanjut, silakan hubungi:<br>
-  <b>+62 895-3280-77773</b><br>
-
-  <a 
-    href="https://wa.me/62895328077773?text=Assalamu'alaikum,%20saya%20ingin%20mengoreksi%20data%20silsilah%20keluarga" 
-    target="_blank" 
-    class="whatsapp-btn">
-    Hubungi via WhatsApp
-  </a>
-</div>
+<div id="app"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -418,88 +307,120 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-onSnapshot(collection(db, "keluarga"), (snapshot) => {
-  let dataByLevel = {};
+function getColor(level){
+  const colors = ["#FFD700", "#E6C200", "#CFAF5B", "#B8963A", "#8B6F2F", "#6B4F2A", "#4A351C"];
+  return colors[level - 1] || "#3a2a1a";
+}
+
+// Fungsi Toggle Folder
+window.toggleFolder = function(element) {
+  const childrenContainer = element.nextElementSibling;
+  if (childrenContainer && childrenContainer.classList.contains('children')) {
+    const isActive = childrenContainer.classList.toggle('active');
+    const arrow = element.querySelector('.arrow');
+    if(arrow) arrow.style.transform = isActive ? "rotate(180deg)" : "rotate(0deg)";
+  }
+};
+
+onSnapshot(collection(db,"keluarga"),(snapshot)=>{
+  let nodes = {};
+  let roots = [];
 
   snapshot.forEach((docu) => {
     const data = docu.data();
-    const lvl = data.level !== undefined ? data.level : 0;
-    const ortu = data.ortu || "Leluhur";
-
-    if (!dataByLevel[lvl]) dataByLevel[lvl] = {};
-    if (!dataByLevel[lvl][ortu]) dataByLevel[lvl][ortu] = [];
-    
-    dataByLevel[lvl][ortu].push(data);
+    nodes[docu.id] = {
+      id: docu.id,
+      nama: data.nama,
+      level: data.level || 1,
+      parentId: data.parentId || null,
+      pasangan: data.pasangan || "-",
+      children: []
+    };
   });
 
-  let html = "";
-  const sortedLevels = Object.keys(dataByLevel).sort((a, b) => parseInt(a) - parseInt(b));
+  Object.values(nodes).forEach(node => {
+    if (node.parentId && nodes[node.parentId]) {
+      nodes[node.parentId].children.push(node);
+    } else {
+      roots.push(node);
+    }
+  });
 
-  sortedLevels.forEach(lvl => {
-    const colors = { "-1": "#888", "1": "#FFD700", "2": "#00BFFF", "3": "#32CD32", "4": "#BA55D3" };
-    const warnaLvl = colors[lvl] || "#fff";
+  function render(node) {
+    const hasChildren = node.children.length > 0;
+    const iconClass = hasChildren ? "folder-icon" : "file-icon";
 
-    html += `
-      <div class="level-section">
-        <div class="level-title" style="color: ${warnaLvl}">LEVEL ${lvl}</div>
-        <div class="parent-groups-container">
+    let html = `
+      <div class="item-container">
+        <div class="card ${iconClass}" 
+             style="border-left-color:${getColor(node.level)}"
+             onclick="toggleFolder(this)">
+          <div>
+            <b>${node.nama}</b><br>
+            <small>Level ${node.level} • Pasangan: ${node.pasangan}</small>
+          </div>
+          <span class="arrow">${hasChildren ? "▼" : ""}</span>
+        </div>
     `;
 
-    const sortedParents = Object.keys(dataByLevel[lvl]).sort((a, b) => {
-  const [a1, a2] = a.split('.').map(Number);
-  const [b1, b2] = b.split('.').map(Number);
+    if (hasChildren) {
+      html += `<div class="children">`;
+      node.children
+        .sort((a, b) => a.nama.localeCompare(b.nama))
+        .forEach(child => html += render(child));
+      html += `</div>`;
+    }
 
-  if (a1 !== b1) return a1 - b1;
-  return a2 - b2;
+    html += `</div>`;
+    return html;
+  }
+
+  let finalHTML = "";
+  roots.sort((a,b)=>a.level - b.level).forEach(root => finalHTML += render(root));
+  document.getElementById("app").innerHTML = finalHTML;
 });
 
-    sortedParents.forEach(parentName => {
-      html += `
-        <div class="parent-box">
-          <div class="parent-name">Anak dari: <b>${parentName}</b></div>
-          <div class="cards-row">
-      `;
-
-      dataByLevel[lvl][parentName].sort((a,b) => a.nama.localeCompare(b.nama)).forEach(item => {
-        html += `
-          <div class="card" style="border-left-color: ${warnaLvl}">
-            <b>${item.nama}</b><br>
-            <span style="color:#888">P: ${item.pasangan || "-"}</span>
-          </div>
-        `;
-      });
-
-      html += `</div></div>`;
-    });
-
-    html += `</div></div>`;
-  });
-
-  document.getElementById("list").innerHTML = html;
-});
-</script>
-<script>
-document.addEventListener("click", function () {
-  const audio = document.getElementById("gendingAudio");
-  audio.play();
-}, { once: true });
-</script>
-<script>
-const audio = document.getElementById("gendingAudio");
-const btn = document.getElementById("audioControl");
-
-btn.addEventListener("click", () => {
-  audio.muted = false;
-  audio.play();
-  btn.style.display = "none";
-});
-window.addEventListener("load", () => {
-  const audio = document.getElementById("gendingAudio");
-  audio.play().catch(() => {
-    console.log("Autoplay diblokir browser");
+// Fitur Pencarian
+document.getElementById("search").addEventListener("input", (e) => {
+  let keyword = e.target.value.toLowerCase();
+  document.querySelectorAll(".item-container").forEach(container => {
+    const card = container.querySelector(".card");
+    container.style.display = card.innerText.toLowerCase().includes(keyword) ? "block" : "none";
   });
 });
-</script>
 
+// Kontrol Splash & Musik
+document.getElementById("btnMasuk").addEventListener("click", () => {
+    const splash = document.getElementById("splash");
+    const music = document.getElementById("bgMusic");
+
+    splash.classList.add("fade-out");
+    music.play().catch(err => console.log("Musik tertunda:", err));
+
+    setTimeout(() => { splash.style.display = "none"; }, 1000);
+});
+// buka popup
+window.showCerita = function() {
+    document.getElementById("popupCerita").style.display = "flex";
+}
+
+// tutup popup
+document.querySelector(".closeBtn").onclick = function() {
+    document.getElementById("popupCerita").style.display = "none";
+}
+window.addEventListener("click", function(e) {
+    const text = e.target.innerText || "";
+
+    // 🔥 GANTI NAMA DI SINI (yang mau muncul cerita)
+    if (text.includes("Mbah PUTIH")) {
+        document.getElementById("popupCerita").style.display = "flex";
+    }
+});
+
+// tombol close
+document.getElementById("closePopup").onclick = function() {
+    document.getElementById("popupCerita").style.display = "none";
+};
+</script>
 </body>
 </html>
