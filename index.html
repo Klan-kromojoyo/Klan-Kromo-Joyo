@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <title>Silsilah Relasi Sempurna</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,18 @@ body {
     font-family: 'Times New Roman', serif;
     color: #f5e6c8;
 
-    /* Background Batik */
-    background: url("https://www.transparenttextures.com/patterns/batik.png"),
-                radial-gradient(circle, #1a120b, #0d0a06);
+    background: 
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+        url("https://raw.githubusercontent.com/nguantukbanget84-sys/KOMIK/refs/heads/main/Batik.png");
+
+    background-size: cover;        /* 🔥 ini kunci utama */
+    background-position: center;   /* biar tetap fokus tengah */
+    background-repeat: no-repeat;  /* jangan diulang */
+    background-attachment: fixed; /* opsional (efek diam saat scroll) */
+}
+body {
+    margin: 0;
+    padding: 0;
 }
 
 /* Wrapper */
@@ -72,11 +82,23 @@ body {
     box-shadow: 0 0 10px rgba(255,215,0,0.5);
 }
 /* container tetap full */
+.footer-box img {
+    max-width: none;   /* 🔥 penting */
+}
 .footer-box {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-top: 30px;
     text-align: center;
+}
+.footer-full {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.footer-full img {
+    width: 100%;
+    display: block;
 }
 
 /* gambar diperkecil & center */
@@ -90,19 +112,18 @@ body {
 
 //* Container footer */
 .footer-box {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-top: 30px;
+    width: 100vw;                     /* full layar */
     position: relative;
-    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;               /* keluar dari wrapper */
+    margin-right: -50vw;
 }
 
-/* Gambar footer */
 .footer-box img {
     width: 100%;
+    height: auto;
     display: block;
-    position: relative;
-    z-index: 1;
 }
 
 /* Layer glow emas */
@@ -130,8 +151,7 @@ body {
 @keyframes glowPulse {
     0% {
         opacity: 0.4;
-        transform: scale(1);
-    }
+        transform: scale(1);}
     50% {
         opacity: 0.8;
         transform: scale(1.05);
@@ -243,9 +263,91 @@ small { color: #c2a45c; }
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+/* Tombol mengambang oval */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    padding: 12px 25px;
+    border-radius: 50px;
+
+    background: #5a3e1b;
+    color: white;
+    border: none;
+
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+/* hover */
+.floating-btn:hover {
+    transform: scale(1.05);
+}
+
+/* saat ditekan */
+.floating-btn:active {
+    background: linear-gradient(45deg, #FFD700, #FFC107, #FFEA00);
+    color: black;
+
+    box-shadow: 
+        0 0 10px gold,
+        0 0 20px gold,
+        0 0 40px gold;
+
+    transform: scale(0.95);
+}
+.header-full {
+    width: 100vw;              /* full lebar layar */
+    height: auto;
+    display: block;
+
+    /* keluar dari wrapper tengah */
+    margin-left: calc(-50vw + 50%);
+
+    /* biar tidak ada garis putih */
+    max-width: none;
+}
+.judul-bawah {
+    text-align: center;   /* center horizontal */
+    width: 100%;          /* pastikan full lebar */
+    margin-top: 40px;
+    font-size: 20px;
+    color: #d4af37;
+}
+
+    left: 20px;
+    background: #00ff66;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: 0.3s;
+}
 </style>
 </head>
 <body>
+
+    <html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Button</title>
+
+</div>
+  <img src="https://raw.githubusercontent.com/nguantukbanget84-sys/silsilah-audio/refs/heads/main/Header.png" class="header-full">
   <h1 id="judul"></h1>
 <p id="mutiara"></p>
 <div id="popupCerita" class="popup">
@@ -274,7 +376,9 @@ small { color: #c2a45c; }
         <input type="text" id="search" placeholder="Telusuri asmane...">
         <div id="app"></div>
     </main>
-
+      <!-- Tombol -->
+<button class="floating-btn" onclick="bukaLink()">LIHAT Cerita Bergambar</button>
+ <div class="footer-full">
     <!-- FOOTER -->
     <footer class="footer-box">
         <img src="https://raw.githubusercontent.com/nguantukbanget84-sys/silsilah-audio/refs/heads/main/ChatGPT%20Image%2021%20Apr%202026%2C%2021.28.46.png" alt="Credit Pembuat">
@@ -283,7 +387,7 @@ small { color: #c2a45c; }
 
 </div>
 
-<h2>SANGKAN PARANING DUMADI</h2>
+<h2 class="judul-bawah">SANGKAN PARANING DUMADI</h2>
 
 <audio id="bgMusic" loop>
     <source src="https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3" type="audio/mpeg">
@@ -421,6 +525,13 @@ window.addEventListener("click", function(e) {
 document.getElementById("closePopup").onclick = function() {
     document.getElementById("popupCerita").style.display = "none";
 };
+
 </script>
+<script>
+function bukaLink() {
+    window.open("https://raw.githubusercontent.com/nguantukbanget84-sys/KOMIK/refs/heads/main/IMG_20260422_190852.png", "_blank");
+}
+</script>
+
 </body>
 </html>
