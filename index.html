@@ -389,9 +389,7 @@ small { color: #c2a45c; }
 
 <h2 class="judul-bawah">SANGKAN PARANING DUMADI</h2>
 
-<audio id="bgMusic" loop>
-    <source src="https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic"></audio>
 
 <div id="app"></div>
 
@@ -494,14 +492,39 @@ document.getElementById("search").addEventListener("input", (e) => {
 });
 
 // Kontrol Splash & Musik
+const music = document.getElementById("bgMusic");
+
+const playlist = [
+  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3",
+  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Yen%20ing%20tawang.mp3"
+];
+
+let currentSong = 0;
+
+function playSong(index) {
+  music.src = playlist[index];
+  music.play().catch(err => console.log("Play error:", err));
+}
+
+// tombol masuk
 document.getElementById("btnMasuk").addEventListener("click", () => {
     const splash = document.getElementById("splash");
-    const music = document.getElementById("bgMusic");
 
     splash.classList.add("fade-out");
-    music.play().catch(err => console.log("Musik tertunda:", err));
+
+    playSong(currentSong); // 🔥 INI KUNCINYA
 
     setTimeout(() => { splash.style.display = "none"; }, 1000);
+});
+
+// auto lanjut lagu
+music.addEventListener("ended", () => {
+  currentSong = (currentSong + 1) % playlist.length;
+  playSong(currentSong);
+});
+music.addEventListener("ended", () => {
+  currentSong = (currentSong + 1) % playlist.length;
+  playSong(currentSong);
 });
 // buka popup
 window.showCerita = function() {
@@ -529,7 +552,7 @@ document.getElementById("closePopup").onclick = function() {
 </script>
 <script>
 function bukaLink() {
-    window.open("https://raw.githubusercontent.com/nguantukbanget84-sys/KOMIK/refs/heads/main/IMG_20260422_190852.png", "_blank");
+    window.open("https://klan-kromojoyo.github.io/Cerita-Legenda-Rejo-Semito/");
 }
 </script>
 
