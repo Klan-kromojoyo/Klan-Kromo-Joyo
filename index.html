@@ -70,10 +70,10 @@ body {
 /* CARD */
 .card {
     background: linear-gradient(145deg, #2b1d0e, #1a120b);
-    padding: 12px;
+    padding: 22px;
     border-radius: 10px;
     margin: 6px 0;
-    border-left: 5px solid  #BA55D3;
+    border-left: 10px solid  #BA55D3;
     transition: 0.3s;
 }
 
@@ -189,7 +189,7 @@ body {
 
 b { color: #ffd700; font-size: 15px; }
 small { color: #c2a45c; }
-.arrow { transition: transform 0.3s; color:  #BA55D3; font-size: 14px; }
+.arrow { transition: transform 0.3s; color:  #BA55D3; font-size: 34px; }
 
 #splash {
     position: fixed;
@@ -240,12 +240,19 @@ small { color: #c2a45c; }
 }
 
 .popup-content {
-    max-width: 90%;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 10px;
     animation: zoomIn 0.5s ease;
+    scrollbar-width: thin;
 }
 
 .popup-content img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 20px gold;
 }
@@ -300,6 +307,7 @@ small { color: #c2a45c; }
         0 0 40px gold;
 
     transform: scale(0.95);
+    
 }
 .header-full {
     width: 100vw;              /* full lebar layar */
@@ -311,6 +319,7 @@ small { color: #c2a45c; }
 
     /* biar tidak ada garis putih */
     max-width: none;
+    
 }
 .judul-bawah {
     text-align: center;   /* center horizontal */
@@ -319,32 +328,9 @@ small { color: #c2a45c; }
     font-size: 20px;
     color: #d4af37;
 }
-
-    left: 20px;
-    background: #00ff66;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: 0.3s;
-}
 </style>
 </head>
 <body>
-
-    <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Floating Button</title>
 
 </div>
   <img src="https://raw.githubusercontent.com/nguantukbanget84-sys/silsilah-audio/refs/heads/main/Header.png" class="header-full">
@@ -391,7 +377,6 @@ small { color: #c2a45c; }
 
 <audio id="bgMusic"></audio>
 
-<div id="app"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -416,12 +401,29 @@ function getColor(level){
 
 // Fungsi Toggle Folder
 window.toggleFolder = function(element) {
-  const childrenContainer = element.nextElementSibling;
-  if (childrenContainer && childrenContainer.classList.contains('children')) {
-    const isActive = childrenContainer.classList.toggle('active');
-    const arrow = element.querySelector('.arrow');
-    if(arrow) arrow.style.transform = isActive ? "rotate(180deg)" : "rotate(0deg)";
-  }
+
+const sound = new Audio(
+"https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"
+);
+
+sound.volume = 0.8;
+sound.play().catch(err => console.log(err));
+
+const childrenContainer = element.nextElementSibling;
+
+if (childrenContainer && childrenContainer.classList.contains('children')) {
+
+const isActive = childrenContainer.classList.toggle('active');
+
+const arrow = element.querySelector('.arrow');
+
+if (arrow) {
+arrow.style.transform =
+isActive ? "rotate(180deg)" : "rotate(0deg)";
+}
+
+}
+
 };
 
 onSnapshot(collection(db,"keluarga"),(snapshot)=>{
@@ -495,8 +497,9 @@ document.getElementById("search").addEventListener("input", (e) => {
 const music = document.getElementById("bgMusic");
 
 const playlist = [
-  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3",
-  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Yen%20ing%20tawang.mp3"
+  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Yen%20ing%20tawang.mp3",
+  "https://github.com/nguantukbanget84-sys/silsilah-audio/raw/refs/heads/main/Lelo%20ledung%20-%20Krisna%20Riswanto%20(cover)%20-%20Cipt.%20Markasan.mp3"
+  
 ];
 
 let currentSong = 0;
@@ -522,10 +525,6 @@ music.addEventListener("ended", () => {
   currentSong = (currentSong + 1) % playlist.length;
   playSong(currentSong);
 });
-music.addEventListener("ended", () => {
-  currentSong = (currentSong + 1) % playlist.length;
-  playSong(currentSong);
-});
 // buka popup
 window.showCerita = function() {
     document.getElementById("popupCerita").style.display = "flex";
@@ -544,17 +543,14 @@ window.addEventListener("click", function(e) {
     }
 });
 
-// tombol close
-document.getElementById("closePopup").onclick = function() {
-    document.getElementById("popupCerita").style.display = "none";
-};
-
 </script>
 <script>
 function bukaLink() {
     window.open("https://klan-kromojoyo.github.io/Cerita-Legenda-Rejo-Semito/");
 }
 </script>
-
+<audio id="klikSound" preload="auto">
+<source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
